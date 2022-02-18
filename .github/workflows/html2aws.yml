@@ -54,6 +54,7 @@ jobs:
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   awsconfigure:
     steps:
       - name: "Configure AWS Credentials" Action For GitHub Actions
@@ -87,6 +88,9 @@ jobs:
 =======
   # This workflow contains a single job called "build"
 >>>>>>> parent of 8f20e5f (Update html2aws.yml)
+=======
+  # This workflow contains a single job called "build"
+>>>>>>> parent of 444fd70 (Update html2aws.yml)
 =======
   # This workflow contains a single job called "build"
 >>>>>>> parent of 444fd70 (Update html2aws.yml)
