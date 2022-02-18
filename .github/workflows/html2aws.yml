@@ -12,9 +12,9 @@ name: "Configure AWS Credentials" Action For GitHub Actions
   uses: aws-actions/configure-aws-credentials@v1
   with:
     # AWS Access Key ID. This input is required if running in the GitHub hosted environment. It is optional if running in a self-hosted environment that already has AWS credentials, for example on an EC2 instance.
-    aws-access-key-id: AKIAWPTWWDE62SNY5PXM
+    aws-access-key-id: 
     # AWS Secret Access Key. This input is required if running in the GitHub hosted environment. It is optional if running in a self-hosted environment that already has AWS credentials, for example on an EC2 instance.
-    aws-secret-access-key: VakOJY/lOXszvfItm7qxRX3lfaz5bQjgjXxDlNwi
+    aws-secret-access-key: 
     # AWS Session Token
     ## aws-session-token: # optional
     # AWS Region, e.g. us-east-2
@@ -52,6 +52,7 @@ on:
 jobs:
 <<<<<<< HEAD
 
+<<<<<<< HEAD
   awsconfigure:
     steps:
       - name: "Configure AWS Credentials" Action For GitHub Actions
@@ -85,8 +86,10 @@ jobs:
 =======
   # This workflow contains a single job called "build"
 >>>>>>> parent of 8f20e5f (Update html2aws.yml)
+=======
+  # This workflow contains a single job called "build"
+>>>>>>> parent of 444fd70 (Update html2aws.yml)
   build:
-    needs: awsconfigure
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
