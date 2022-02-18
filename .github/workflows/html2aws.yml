@@ -15,7 +15,7 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  awsconfigure:
+  awsconfig:
     steps:
       - name: "Configure AWS Credentials" Action For GitHub Actions
       # You may pin to the exact commit or the version.
@@ -47,7 +47,7 @@ jobs:
   
   # This workflow contains a single job called "build"
   build:
-    needs: awsconfigure
+    needs: awsconfig
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
     # Steps represent a sequence of tasks that will be executed as part of the job
