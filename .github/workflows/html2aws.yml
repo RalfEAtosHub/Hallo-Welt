@@ -58,7 +58,8 @@ jobs:
       
       # hole eine Liste der EC2-Instanzen
       - name: Liste EC2 Instanzen
-        run: scripts/list-ec2-instances.sh
+        #run: scripts/list-ec2-instances.sh
+        run: aws EC2 describe-instances
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
