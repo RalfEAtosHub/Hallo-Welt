@@ -27,10 +27,8 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - name: checkout
       - uses: actions/checkout@v2
       # Configuring the AWS credentials
-      - name: Configure AWS Credentials
       # You may pin to the exact commit or the version.
       # uses: aws-actions/configure-aws-credentials@05b148adc31e091bafbaf404f745055d4d3bc9d2
       - uses: aws-actions/configure-aws-credentials@v1
@@ -57,6 +55,9 @@ jobs:
           ##role-external-id: # optional
           # Skip session tagging during role assumption
           ##role-skip-session-tagging: # optional
+      
+      # hole eine Liste der EC2-Instanzen
+      - name: Liste EC2 Instanzen
         run: scripts/list-ec2-instances.sh
 
       # Runs a single command using the runners shell
