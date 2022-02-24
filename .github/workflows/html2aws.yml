@@ -12,6 +12,10 @@ on:
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
+    environment:
+        description: 'Environment to run tests against'
+        type: environment
+        required: true
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -52,7 +56,7 @@ jobs:
           ##role-external-id: # optional
           # Skip session tagging during role assumption
           ##role-skip-session-tagging: # optional
-        run: aws EC2 describe-instances > ec2-instances.txt
+        run: scripts/list-ec2-instances.sh
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
