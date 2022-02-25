@@ -60,7 +60,7 @@ jobs:
       - name: Liste EC2 Instanzen
         run: sudo sh scripts/list-ec2-instances.sh
         env:
-          aws_ec2_metadata_disabled: true
+          AWS_EC2_METADATA_DISABLED: true
         #run: aws ec2 describe-instances
 
       # Runs a single command using the runners shell
