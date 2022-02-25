@@ -60,12 +60,12 @@ jobs:
       - name: Liste EC2 Instanzen
         run: sudo sh scripts/list-ec2-instances.sh
         env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_REGION: eu-central-1
-          AWS_EC2_METADATA_DISABLED: true
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-access-key-id: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws_region: eu-central-1
+          aws_ec2_metadata_disabled: true
         #run: aws ec2 describe-instances
-        
+
       # Runs a single command using the runners shell
       - name: Run a one-line script
         run: echo Hello, world!
