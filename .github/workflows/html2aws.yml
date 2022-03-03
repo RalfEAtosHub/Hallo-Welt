@@ -31,7 +31,7 @@ jobs:
       
       
       # Fasse die index.php und die Dateien in html zu einer ZIP-Datei zusammen, die in Elastic Beanstalk hochgeladen werden kann
-      - name: Erzeuge das ZIP Archiv für AWS Elastic Beanstakl
+      - name: Erzeuge das ZIP Archiv für AWS Elastic Beanstalk
         run: sh scripts/erzeuge-zip-archiv.sh
 
       # Erzeugte Hallo-Welt.zip hochladen
@@ -39,7 +39,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: Hallo Welt Dateien
-          path: ~/Hallo-Welt.zip
+          path: Artefakt/Hallo-Welt.zip
 
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
@@ -48,6 +48,7 @@ jobs:
           echo test, and deploy your project.
 
   deploy:
+    needs: build
     runs-on: ubuntu-18.04
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
