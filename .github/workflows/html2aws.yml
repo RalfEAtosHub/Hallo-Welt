@@ -38,7 +38,7 @@ jobs:
       - name: Upload Artifact
         uses: actions/upload-artifact@v2
         with:
-          name: Hallo Welt Dateien
+          name: Hallo-Welt-Archiv
           path: Artefakt/Hallo-Welt.zip
 
       # Runs a set of commands using the runners shell
@@ -85,10 +85,11 @@ jobs:
       - name: Download Artifact
         uses: actions/download-artifact@v2
         with:
-          name: Hallo Welt Dateien
+          name: Hallo-Welt-Archiv
+          path: Artefakt
 
       # Artefakt entpacken
       - name: Artefakt entpacken
-        run: sh unzip '~/runner/work/Hallo-Welt/Hallo-Welt/Hallo Welt Dateien.zip' ~
+        run: sh unzip Artefakt/Hallo-Welt-Archiv.zip
       - name: Home - Verzeichnis auflisten
         run: ls -l ~
