@@ -28,6 +28,30 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
+      
+      
+      # Fasse die index.php und die Dateien in html zu einer ZIP-Datei zusammen, die in Elastic Beanstalk hochgeladen werden kann
+      - name: Erzeuge das ZIP Archiv für AWS Elastic Beanstakl
+        run: sh scripts/erzeuge-zip-archiv.sh
+
+      # Erzeugte Hallo-Welt.zip hochladen
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: Hallo Welt Dateien
+          path: ~/Hallo-Welt.zip
+
+      # Runs a set of commands using the runners shell
+      - name: Run a multi-line script
+        run: |
+          echo Add other actions to build,
+          echo test, and deploy your project.
+
+  deploy:
+    runs-on: ubuntu-18.04
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
       # Configuring the AWS credentials
       # You may pin to the exact commit or the version.
       # uses: aws-actions/configure-aws-credentials@05b148adc31e091bafbaf404f745055d4d3bc9d2
@@ -55,17 +79,6 @@ jobs:
           ##role-external-id: # optional
           # Skip session tagging during role assumption
           ##role-skip-session-tagging: # optional
-      
-      # Fasse die index.php und die Dateien in html zu einer ZIP-Datei zusammen, die in Elastic Beanstalk hochgeladen werden kann
-      - name: Erzeuge das ZIP Archiv für AWS Elastic Beanstakl
-        run: sh scripts/erzeuge-zip-archiv.sh
-
-      # Erzeugte Hallo-Welt.zip hochladen
-      - name: Upload Artifact
-        uses: actions/upload-artifact@v2
-        with:
-          name: Hallo Welt Dateien
-          path: ~/Hallo-Welt.zip
 
       # Erzeugte Hallo-Welt.zip herunterladen
       - name: Download Artifact
@@ -73,14 +86,8 @@ jobs:
         with:
           name: Hallo Welt Dateien
 
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
-        run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
-
-  deploy:
-    runs-on: ubuntu-18.04
-    steps:
-      - name: Liste Dateien
+      # Artefakt entpacken
+      - name: Artefakt entpacken
+        run: sh unzip '~/runner/work/Hallo-Welt/Hallo-Welt/Hallo Welt Dateien.zip' ~
+      - name: Home - Verzeichnis auflisten
         run: ls -l ~
