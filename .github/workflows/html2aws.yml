@@ -88,8 +88,13 @@ jobs:
           name: Hallo-Welt-Archiv
           path: Artefakt
 
+      - name: Überprüfen
+        run:  |
+          ls- l
+          ls -l Artefakt
+
       # Artefakt entpacken
       - name: Artefakt entpacken
-        run: sh unzip Artefakt/Hallo-Welt-Archiv.zip
+        run: unzip Artefakt/Hallo-Welt-Archiv.zip
       - name: Home - Verzeichnis auflisten
         run: ls -l ~
