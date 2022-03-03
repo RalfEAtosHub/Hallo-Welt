@@ -56,24 +56,22 @@ jobs:
           # Skip session tagging during role assumption
           ##role-skip-session-tagging: # optional
       
-      # hole eine Liste der EC2-Instanzen
-      - name: Liste EC2 Instanzen
-        run: sh scripts/list-ec2-instances.sh
-        #run: aws ec2 describe-instances
+      # Fasse die index.php und die Dateien in html zu einer ZIP-Datei zusammen, die in Elastic Beanstalk hochgeladen werden kann
+      - name: Erzeuge das ZIP Archiv für AWS Elastic Beanstakl
+        run: sh scripts/erzeuge-zip-archiv.sh
 
-      # Erzeugte Liste hochladen
+      # Erzeugte Hallo-Welt.zip hochladen
       - name: Upload Artifact
         uses: actions/upload-artifact@v2
         with:
-          name: Liste der EC2-Instanzen
-          path: ~/ec2-instances.txt
+          name: Hallo Welt Dateien
+          path: ~/Hallo-Welt.zip
 
-      # Erzeugte Liste herunterladen
+      # Erzeugte Hallo-Welt.zip herunterladen
       - name: Download Artifact
         uses: actions/download-artifact@v2
         with:
-          name: Liste der EC2-Instanzen
-          #path: build
+          name: Hallo Welt Dateien
 
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
@@ -85,4 +83,4 @@ jobs:
     runs-on: ubuntu-18.04
     steps:
       - name: Liste Dateien
-        run: ls -l
+        run: ls -l ~
