@@ -90,7 +90,7 @@ jobs:
 
       - name: Überprüfen
         run:  |
-          ls- l
+          ls -l
           ls -l Artefakt
 
       # Artefakt entpacken
