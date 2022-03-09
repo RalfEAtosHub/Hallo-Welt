@@ -82,19 +82,15 @@ jobs:
           ##role-skip-session-tagging: # optional
 
       # Erzeugte Hallo-Welt.zip herunterladen
-      - name: Download Artifact
+      - name: Artefakt herunterladen
         uses: actions/download-artifact@v2
         with:
           name: Hallo-Welt-Archiv
           path: Artefakt
 
       - name: Überprüfen
-        run:  |
-          ls -l
-          ls -l Artefakt
+        run: ls -l Artefakt
 
-      # Artefakt entpacken
-      - name: Artefakt entpacken
-        run: unzip Artefakt/Hallo-Welt-Archiv.zip
-      - name: Home - Verzeichnis auflisten
-        run: ls -l ~
+      # Abfrage der Elastic Beanstalk Abfragen mit Filter nach "RalfE" im Namen
+      - name: EBSenvAbfrage
+        run: sh scripts/EBSenvAbfrage.sh
