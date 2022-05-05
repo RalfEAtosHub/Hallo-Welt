@@ -103,13 +103,13 @@ jobs:
 
       # Anlage der Elastic Beanstalk - Umgebung falls nicht vorhanden
       - name: Applikation Hallo-Welt Anlage
-        if: Resultat == 'Da ist nichts'
+        if: ${{deploy.outputs.Resultat}} == 'Da ist nichts'
         run:
           echo "Na dann mal los"
           
       # Anlage einer neuen version der Hallo-Welt App
       - name: Applikation Hallo-Welt neue Versiion
-        if: Resultat == 'Hallo-Welt'
+        if: ${{deploy.outputs.Resultat}} == 'Hallo-Welt'
         run:
           echo "Alles neu macht der Meu"
             
