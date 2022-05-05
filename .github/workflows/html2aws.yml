@@ -50,6 +50,8 @@ jobs:
   deploy:
     needs: build
     runs-on: ubuntu-18.04
+    outputs:
+      Resultat: ${{steps.Abfrage.outputs.Ergebnis}}
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
@@ -91,6 +93,7 @@ jobs:
       - name: Überprüfen
         run: ls -l Artefakt
 
+
       # Abfrage der Elastic Beanstalk Applikationen mit Filter nach "Hallo-Welt" im Namen
       - name: EBSAppAbfrage
         id: Abfrage
@@ -100,13 +103,13 @@ jobs:
 
       # Anlage der Elastic Beanstalk - Umgebung falls nicht vorhanden
       - name: Applikation Hallo-Welt Anlage
-        if: steps.Abfrage.outputs.Ergebnis == 'Da ist nichts'
+        if: Resultat == 'Da ist nichts'
         run:
           echo "Na dann mal los"
           
       # Anlage einer neuen version der Hallo-Welt App
       - name: Applikation Hallo-Welt neue Versiion
-        if: steps.Abfrage.outputs.Ergebnis == 'Hallo-Welt'
+        if: Resultat == 'Hallo-Welt'
         run:
           echo "Alles neu macht der Meu"
             
