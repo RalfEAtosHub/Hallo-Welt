@@ -91,12 +91,22 @@ jobs:
       - name: Überprüfen
         run: ls -l Artefakt
 
-      # Abfrage der Elastic Beanstalk Abfragen mit Filter nach "RalfE" im Namen
+      # Abfrage der Elastic Beanstalk Applikationen mit Filter nach "Hallo-Welt" im Namen
       - name: EBSAppAbfrage
         id: Abfrage
-        run: 
+        run:
           Ergebnis=$(bash scripts/EBSAppAbfrage.sh) &&
           echo "::set-output name=Ergebnis::$Ergebnis"
 
       # Anlage der Elastic Beanstalk - Umgebung falls nicht vorhanden
-
+      - name: Applikation Hallo-Welt Anlage
+        if: steps.Abfrage.outputs.Ergebnis == "Da ist nichts"
+        run:
+          echo "Na dann mal los"
+          
+      # Anlage einer neuen version der Hallo-Welt App
+      - name: Applikation Hallo-Welt neue Versiion
+        if: steps.main.outpsteps.Abfrage.outputs.Ergebnis == "Hallo-Welt"
+        run:
+          echo "Alles neu macht der Meu"
+            
