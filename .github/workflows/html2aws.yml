@@ -50,8 +50,6 @@ jobs:
   deploy:
     needs: build
     runs-on: ubuntu-18.04
-    outputs:
-      Resultat: ${{steps.Abfrage.outputs.Ergebnis}}
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
@@ -99,17 +97,17 @@ jobs:
         id: Abfrage
         run:
           Ergebnis=$(bash scripts/EBSAppAbfrage.sh) &&
-          echo "::set-output name=Ergebnis::$Ergebnis"
+          echo ::set-output name=Ergebnis::$Ergebnis
 
       # Anlage der Elastic Beanstalk - Umgebung falls nicht vorhanden
       - name: Applikation Hallo-Welt Anlage
-        if: $Resultat == 'Da ist nichts'
+        if: steps.Abfrage.outpus.Ergebnis == 'Da ist nichts'
         run:
           echo "Na dann mal los"
           
       # Anlage einer neuen version der Hallo-Welt App
       - name: Applikation Hallo-Welt neue Versiion
-        if: $Resultat == 'Hallo-Welt'
+        if: steps.Abfrage.outpus.Ergebnis == 'Hallo-Welt'
         run:
           echo "Alles neu macht der Meu"
             
