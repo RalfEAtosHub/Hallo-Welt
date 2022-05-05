@@ -102,11 +102,11 @@ jobs:
       - name: Applikation Hallo-Welt Anlage
         if: steps.Abfrage.outputs.Ergebnis == "Da ist nichts"
         run:
-          echo "Na dann mal los"
+          echo Na dann mal los
           
       # Anlage einer neuen version der Hallo-Welt App
       - name: Applikation Hallo-Welt neue Versiion
         if: steps.main.outpsteps.Abfrage.outputs.Ergebnis == "Hallo-Welt"
         run:
-          echo "Alles neu macht der Meu"
+          echo Alles neu macht der Meu
             
