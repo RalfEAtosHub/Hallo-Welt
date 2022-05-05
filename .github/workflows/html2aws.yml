@@ -98,5 +98,5 @@ jobs:
           Ergebnis=$(bash scripts/EBSAppAbfrage.sh) &&
           echo "::set-output name=Ergebnis::$Ergebnis"
 
-      # Anlage der Elastic Beanstalk - Umgebung falls nicht vrohanden
+      # Anlage der Elastic Beanstalk - Umgebung falls nicht vorhanden
 
