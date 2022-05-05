@@ -93,7 +93,10 @@ jobs:
 
       # Abfrage der Elastic Beanstalk Abfragen mit Filter nach "RalfE" im Namen
       - name: EBSAppAbfrage
-        run: bash scripts/EBSAppAbfrage.sh
+        id: Abfrage
+        run: 
+          Ergebnis=$(bash scripts/EBSAppAbfrage.sh) &&
+          echo "::set-output name=Ergebnis::$Ergebnis"
 
       # Anlage der Elastic Beanstalk - Umgebung falls nicht vrohanden
 
