@@ -1,8 +1,8 @@
 #!bin/bash
 REApp=$(aws elasticbeanstalk describe-applications --application-names | grep "Hallo-Welt")
-echo "Ergebnis: REApp <--"
+printf "Ergebnis: $REApp <--"
 if [[ -z $REApp ]]
     then echo "Da ist nichts"
-    else echo $REApp
+    else echo "$REApp"
 fi
 export REApp
