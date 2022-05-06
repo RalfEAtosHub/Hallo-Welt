@@ -103,7 +103,7 @@ jobs:
       # Anlage der Elastic Beanstalk - Umgebung falls nicht vorhanden
       - name: Applikation Hallo-Welt Anlage
         #if: steps.Abfrage.outpus.Resultat == 'Da ist nichts'
-        if: [-z $REApp]
+        if: $REApp == ""
         run:
           echo "Na dann mal los!"
           
