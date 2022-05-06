@@ -97,7 +97,7 @@ jobs:
         run:
           #bash scripts/EBSAppAbfrage.sh
           Ergebnis=$(sh scripts/EBSAppAbfrage.sh);
-          echo '::set-output name=Resultat::Ergebnis';
+          echo '::set-output name=Resultat::$Ergebnis';
           echo ">>> ${{steps.Abfrage.outputs.Resultat}}";
           printf %s "--> ${{steps.Abfrage.outputs.Resultat}}"
 
