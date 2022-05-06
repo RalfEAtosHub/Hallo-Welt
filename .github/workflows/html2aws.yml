@@ -96,19 +96,19 @@ jobs:
       - name: EBSAppAbfrage
         id: Abfrage
         run:
-          bash scripts/EBSAppAbfrage.sh
-          #Ergebnis=$(bash scripts/EBSAppAbfrage.sh)
-          #echo ::set-output name=Resultat::Ergebnis
+          #bash scripts/EBSAppAbfrage.sh
+          Ergebnis=$(bash scripts/EBSAppAbfrage.sh)
+          echo ::set-output name=Resultat::Ergebnis
 
       # Anlage der Elastic Beanstalk - Umgebung falls nicht vorhanden
       - name: Applikation Hallo-Welt Anlage
-        if: steps.Abfrage.outpus.Resultat == ""
+        if: steps.Abfrage.outputs.Resultat == ''
         run:
           echo "Na dann mal los!"
           
       # Anlage einer neuen version der Hallo-Welt App
       - name: Applikation Hallo-Welt neue Versiion
-        if: steps.Abfrage.outpus.Resultat == "Hallo-Welt"
+        if: steps.Abfrage.outputs.Resultat == 'Hallo-Welt'
         run:
           echo "Alles neu macht der Meu"
             
