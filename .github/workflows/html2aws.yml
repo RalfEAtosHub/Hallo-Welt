@@ -98,7 +98,7 @@ jobs:
           #bash scripts/EBSAppAbfrage.sh
           Ergebnis=$(sh scripts/EBSAppAbfrage.sh) |
           echo ::set-output name=Resultat::Ergebnis |
-          printf "--> $Ergebnis"
+          printf %s "--> $Ergebnis"
 
       # Anlage der Elastic Beanstalk - Umgebung falls nicht vorhanden
       - name: Applikation Hallo-Welt Anlage
