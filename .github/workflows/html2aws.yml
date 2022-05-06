@@ -91,14 +91,13 @@ jobs:
       - name: Überprüfen
         run: ls -l Artefakt
 
-
       # Abfrage der Elastic Beanstalk Applikationen mit Filter nach "Hallo-Welt" im Namen
       - name: EBSAppAbfrage
         id: Abfrage
         run:
-          #bash scripts/EBSAppAbfrage.sh
-          Ergebnis=$(sh scripts/EBSAppAbfrage.sh) &&
-          echo ::set-output name=Resultat::Ergebnis
+          bash scripts/EBSAppAbfrage.sh
+          #Ergebnis=$(sh scripts/EBSAppAbfrage.sh) &&
+          #echo ::set-output name=Resultat::Ergebnis
 
       # Anlage der Elastic Beanstalk - Umgebung falls nicht vorhanden
       - name: Applikation Hallo-Welt Anlage
@@ -107,7 +106,7 @@ jobs:
           echo "Na dann mal los!"
           
       # Anlage einer neuen version der Hallo-Welt App
-      - name: Applikation Hallo-Welt neue Versiion
+      - name: Applikation Hallo-Welt neue Version
         if: steps.Abfrage.outputs.Resultat == 'Hallo-Welt'
         run:
           echo "Alles neu macht der Meu"
