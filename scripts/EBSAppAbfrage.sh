@@ -4,7 +4,7 @@ if [ -z $REApp ]
     then
     Ausgabe="fehlt"
     else
-    Ausgabe="App 'Hallo-Welt' gefunden"
+    Ausgabe="App Hallo-Welt gefunden"
 fi
 printf %s $Ausgabe
 export Ergebnis=$Ausgabe
