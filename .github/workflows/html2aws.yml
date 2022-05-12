@@ -104,7 +104,7 @@ jobs:
       - name: Applikation Hallo-Welt Anlage
         env:
           Sachstand: ${{steps.Abfrage.outputs.Resultat}}
-        if: ${{ env.Sachstand }} == 'fehlt'
+        if: ${{ env.Sachstand == 'fehlt' }}
         run:
           echo "Na dann mal los!"
           
@@ -112,7 +112,7 @@ jobs:
       - name: Applikation Hallo-Welt neue Version
         env:
           Sachstand: ${{steps.Abfrage.outputs.Resultat}}
-        if: ${{ env.Sachstand }} == 'App Hallo-Welt gefunden'
+        if: ${{ env.Sachstand == 'App Hallo-Welt gefunden' }}
         run:
           echo "Alles neu macht der Meu"
             
