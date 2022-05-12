@@ -94,24 +94,21 @@ jobs:
       # Abfrage der Elastic Beanstalk Applikationen mit Filter nach "Hallo-Welt" im Namen
       - name: EBSAppAbfrage
         id: Abfrage
-        env: 
-          Ergebnis: ${{ bash scripts/EBSAppAbfrage.sh }}
         run:
-          #bash scripts/EBSAppAbfrage.sh
-          #Ergebnis=$(sh scripts/EBSAppAbfrage.sh);
+          bash scripts/EBSAppAbfrage.sh
           echo "::set-output name=Resultat::Ergebnis";
           echo ">>> ${{steps.Abfrage.outputs.Resultat}}";
           printf %s "--> ${{steps.Abfrage.outputs.Resultat}}"
 
       # Anlage der Elastic Beanstalk - Umgebung falls nicht vorhanden
       - name: Applikation Hallo-Welt Anlage
-        if: steps.Abfrage.outputs.Resultat == ''
+        if: steps.Abfrage.outputs.Resultat == "fehlt"
         run:
           echo "Na dann mal los!"
           
       # Anlage einer neuen version der Hallo-Welt App
       - name: Applikation Hallo-Welt neue Version
-        if: steps.Abfrage.outputs.Resultat == 'geunden'
+        if: steps.Abfrage.outputs.Resultat == "App 'Hallo-Welt' gefunden"
         run:
           echo "Alles neu macht der Meu"
             
