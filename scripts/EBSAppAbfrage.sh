@@ -6,5 +6,5 @@ if [ -z $REApp ]
     else
     Ausgabe="App Hallo-Welt gefunden"
 fi
-printf %s $Ausgabe
+#printf %s $Ausgabe
 export Ergebnis=$Ausgabe
