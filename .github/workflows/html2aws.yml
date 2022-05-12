@@ -101,13 +101,17 @@ jobs:
 
       # Anlage der Elastic Beanstalk - Umgebung falls nicht vorhanden
       - name: Applikation Hallo-Welt Anlage
-        if: steps.Abfrage.outputs.Resultat == ${{'fehlt'}}
+        with:
+          Sachstand: ${{steps.Abfrage.outputs.Resultat}}
+        if: Sachstand == 'fehlt'
         run:
           echo "Na dann mal los!"
           
       # Anlage einer neuen version der Hallo-Welt App
       - name: Applikation Hallo-Welt neue Version
-        if: steps.Abfrage.outputs.Resultat == ${{'App Hallo-Welt gefunden'}}
+        with:
+          Sachstand: ${{steps.Abfrage.outputs.Resultat}}
+        if: Sachstand == 'App Hallo-Welt gefunden'
         run:
           echo "Alles neu macht der Meu"
             
