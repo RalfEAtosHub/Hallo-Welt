@@ -95,9 +95,9 @@ jobs:
       - name: EBSAppAbfrage
         id: Abfrage
         run:
-          bash scripts/EBSAppAbfrage.sh;
-          printf %s "> $Ergebnis <";
-          echo "::set-output name=Resultat::$Ergebnis"
+          #bash scripts/EBSAppAbfrage.sh;
+          #printf %s "> $Ergebnis <";
+          echo "::set-output name=Resultat::$(bash scripts/EBSAppAbfrage.sh)"
           #printf %s "--> ${{steps.Abfrage.outputs.Resultat}}"
 
       # Anlage der Elastic Beanstalk - Umgebung falls nicht vorhanden

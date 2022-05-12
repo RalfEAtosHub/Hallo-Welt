@@ -8,3 +8,4 @@ if [ -z $REApp ]
 fi
 #printf %s $Ausgabe
 export Ergebnis=$Ausgabe
+echo $Ergebnis
