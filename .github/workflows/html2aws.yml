@@ -101,7 +101,7 @@ jobs:
 
       # Anlage der Elastic Beanstalk - Umgebung falls nicht vorhanden
       - name: Applikation Hallo-Welt Anlage
-        with:
+        env:
           Sachstand: ${{steps.Abfrage.outputs.Resultat}}
         if: Sachstand == 'fehlt'
         run:
@@ -109,7 +109,7 @@ jobs:
           
       # Anlage einer neuen version der Hallo-Welt App
       - name: Applikation Hallo-Welt neue Version
-        with:
+        env:
           Sachstand: ${{steps.Abfrage.outputs.Resultat}}
         if: Sachstand == 'App Hallo-Welt gefunden'
         run:
